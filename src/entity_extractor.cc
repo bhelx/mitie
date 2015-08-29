@@ -8,48 +8,48 @@
 #include <mitie/named_entity_extractor.h>
 #include <mitie/conll_tokenizer.h>
 
-#include "ner_extractor.h"
+#include "entity_extractor.h"
 
 using namespace v8;
 using namespace std;
 using namespace mitie;
 
-Nan::Persistent<v8::Function> NerExtractor::constructor;
+Nan::Persistent<v8::Function> EntityExtractor::constructor;
 
-NerExtractor::NerExtractor(string ner_file_path) {
+EntityExtractor::EntityExtractor(string ner_file_path) {
   string classname;
   dlib::deserialize(ner_file_path) >> classname >> ner_;
   tagstr_ = ner_.get_tag_name_strings();
 }
 
-NerExtractor::~NerExtractor() {
+EntityExtractor::~EntityExtractor() {
 }
 
-void NerExtractor::Init(v8::Local<v8::Object> exports) {
+void EntityExtractor::Init(v8::Local<v8::Object> exports) {
   Nan::HandleScope scope;
 
   // Prepare constructor template
   v8::Local<v8::FunctionTemplate> tpl = Nan::New<v8::FunctionTemplate>(New);
-  tpl->SetClassName(Nan::New("NerExtractor").ToLocalChecked());
+  tpl->SetClassName(Nan::New("EntityExtractor").ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
   // Prototype
   Nan::SetPrototypeMethod(tpl, "predict", Predict);
 
   constructor.Reset(tpl->GetFunction());
-  exports->Set(Nan::New("NerExtractor").ToLocalChecked(), tpl->GetFunction());
+  exports->Set(Nan::New("EntityExtractor").ToLocalChecked(), tpl->GetFunction());
 }
 
-void NerExtractor::New(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+void EntityExtractor::New(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   if (info.IsConstructCall()) {
-    // Invoked as constructor: `new NerExtractor(...)`
+    // Invoked as constructor: `new EntityExtractor(...)`
     v8::String::Utf8Value arg0(info[0]->ToString());
     string ner_file_path = std::string(*arg0);
-    NerExtractor* obj = new NerExtractor(ner_file_path);
+    EntityExtractor* obj = new EntityExtractor(ner_file_path);
     obj->Wrap(info.This());
     info.GetReturnValue().Set(info.This());
   } else {
-    // Invoked as plain function `NerExtractor(...)`, turn into construct call.
+    // Invoked as plain function `EntityExtractor(...)`, turn into construct call.
     const int argc = 1;
     v8::Local<v8::Value> argv[argc] = { info[0] };
     v8::Local<v8::Function> cons = Nan::New<v8::Function>(constructor);
@@ -57,8 +57,8 @@ void NerExtractor::New(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   }
 }
 
-void NerExtractor::Predict(const Nan::FunctionCallbackInfo<v8::Value>& info) {
-  NerExtractor* obj = ObjectWrap::Unwrap<NerExtractor>(info.Holder());
+void EntityExtractor::Predict(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+  EntityExtractor* obj = ObjectWrap::Unwrap<EntityExtractor>(info.Holder());
 
   v8::String::Utf8Value arg0(info[0]->ToString());
   const std::string data = std::string(*arg0);

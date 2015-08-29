@@ -7,13 +7,13 @@ if (!process.env.NER_MODEL) {
 }
 
 describe('mitie', function() {
-  describe('NerExtractor', function () {
+  describe('EntityExtractor', function () {
 
-    it('should contain a NerExtractor class', function () {
-      assert.equal(typeof mitie.NerExtractor, 'function');
+    it('should contain a EntityExtractor class', function () {
+      assert.equal(typeof mitie.EntityExtractor, 'function');
     });
 
-    var extractor = new mitie.NerExtractor(process.env.NER_MODEL);
+    var extractor = new mitie.EntityExtractor(process.env.NER_MODEL);
 
     it('should construct the extractor given a model file path', function () {
       assert.equal(typeof extractor, 'object');

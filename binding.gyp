@@ -4,7 +4,7 @@
       "target_name": "mitie",
       "sources": [
          "src/mitie.cc",
-         "src/ner_extractor.cc"
+         "src/entity_extractor.cc"
       ],
       "cflags!": [ "-fno-exceptions" ],
       "cflags_cc!": [ "-fno-exceptions" ],

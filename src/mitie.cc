@@ -1,8 +1,8 @@
 #include <nan.h>
-#include "ner_extractor.h"
+#include "entity_extractor.h"
 
 void InitAll(v8::Local<v8::Object> exports) {
-  NerExtractor::Init(exports);
+  EntityExtractor::Init(exports);
 }
 
 NODE_MODULE(mitie, InitAll)

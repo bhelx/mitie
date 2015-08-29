@@ -27,7 +27,7 @@ var mitie = require('mitie');
 // You can also find where to get these on the main MIT project repo
 
 var nerFile = '/usr/local/Cellar/mitie/0.4/share/MITIE-models/english/ner_model.dat';
-var extractor = new mitie.NerExtractor(nerFile);
+var extractor = new mitie.EntityExtractor(nerFile);
 
 // Feed in some data to the predict method
 
