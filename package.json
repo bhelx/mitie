@@ -4,6 +4,15 @@
   "description": "Node bindings for MIT Information Extraction https://github.com/mit-nlp/MITIE",
   "gypfile": true,
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bhelx/mitie.git"
+  },
+  "keywords": [
+    "mitie",
+    "nlp",
+    "ner"
+  ],
   "scripts": {
     "test": "node_modules/mocha/bin/mocha"
   },

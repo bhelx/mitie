@@ -23,10 +23,16 @@ The API looks something like this:
 ```javascript
 var mitie = require('mitie');
 
-// point it at a ner model .dat file (you can also find where to get these on the main MIT project repo)
-var extractor = new mitie.NerExtractor('/usr/local/Cellar/mitie/0.4/share/MITIE-models/english/ner_model.dat');
+// Point it at a ner model .dat file
+// You can also find where to get these on the main MIT project repo
 
-var results = extractor.predict("Barack Obama visited New Orleans today for the anniversary of Hurricane Katrina.");
+var nerFile = '/usr/local/Cellar/mitie/0.4/share/MITIE-models/english/ner_model.dat';
+var extractor = new mitie.NerExtractor(nerFile);
+
+// Feed in some data to the predict method
+
+var data = "Barack Obama visited New Orleans today for the anniversary of Hurricane Katrina."
+var results = extractor.predict(data);
 
 /**
  * results => {
@@ -50,15 +56,15 @@ Install with development deps:
 npm install --dev
 ```
 
-Run mocha tests pointing to a new model:
+Run mocha tests pointing to a ner model:
 
-```bash
+```
 NER_MODEL=/usr/local/Cellar/mitie/0.4/share/MITIE-models/english/ner_model.dat npm test
 ```
 
 ## TODO
 
-* Would like to implement the rest of the library
+* Would like to implement the rest of the library (implement binary relation detection)
 * API could be cleaner for ner extractor, should allow passing a file path for the data
 * Support other platforms, will probably not compile on anything other than OS X for now
 
