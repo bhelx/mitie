@@ -77,6 +77,7 @@ void EntityExtractor::Predict(const Nan::FunctionCallbackInfo<v8::Value>& info) 
   obj->ner_.predict(tokens, chunks, chunk_tags, chunk_scores);
 
   v8::Local<v8::Object> resultObj = Nan::New<v8::Object>();
+
   v8::Local<v8::Array> tags = Nan::New<v8::Array>(chunks.size());
 
   for (unsigned int i = 0; i < chunks.size(); ++i) {

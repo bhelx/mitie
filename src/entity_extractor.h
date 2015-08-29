@@ -1,5 +1,5 @@
-#ifndef NER_EXTRACTOR_H
-#define NER_EXTRACTOR_H
+#ifndef ENTITY_EXTRACTOR_H
+#define ENTITY_EXTRACTOR_H
 
 #include <nan.h>
 #include <mitie/named_entity_extractor.h>
@@ -15,8 +15,8 @@ class EntityExtractor : public Nan::ObjectWrap {
     static void New(const Nan::FunctionCallbackInfo<v8::Value>& info);
     static void Predict(const Nan::FunctionCallbackInfo<v8::Value>& info);
     static Nan::Persistent<v8::Function> constructor;
-    mitie::named_entity_extractor ner_;
     vector<string> tagstr_;
+    mitie::named_entity_extractor ner_;
 };
 
 #endif
