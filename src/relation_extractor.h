@@ -18,9 +18,6 @@ class RelationExtractor : public Nan::ObjectWrap {
     static void New(const Nan::FunctionCallbackInfo<v8::Value>& info);
     static void Predict(const Nan::FunctionCallbackInfo<v8::Value>& info);
     static Nan::Persistent<v8::Function> constructor;
-    //mitie::binary_relation_detector bd_;
-    //mitie::named_entity_extractor ner_;
-    //vector<string> tagstr_;
     string ner_file_;
     string relation_file_;
 };
