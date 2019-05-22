@@ -1,5 +1,7 @@
 ## MITIE
 
+*Warning*: I am no longer using this library and it is not supported. I'd suggest forking it or looking for an actively maintained library.
+
 This project is a node binding for the [MIT Information Extraction library](https://github.com/mit-nlp/MITIE). It's written in C++ and js.
 
 I've implemented both the [Named Entity Recognition](https://en.wikipedia.org/wiki/Named-entity_recognition) extractor and the Binary Relation detector.
